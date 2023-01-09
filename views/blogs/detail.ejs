@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include('../partials/head.ejs') %>
+    <body>
+    <%- include('../partials/nav.ejs') %>
+    <div class="blog-content">
+      <h1><%= blog.title %> </h1>
+      <h1><%= blog.body %> </h1>
+      <a id="delete" data-doc="<%= blog.id %>">Delete</a>
+    </div>
+    <%- include('../partials/footer.ejs') %>
+
+</body>
+<script>
+  const deleteBtn = document.querySelector('#delete');
+  deleteBtn.addEventListener('click',(e)=>{
+    const endpoint = `/blogs/${deleteBtn.dataset.doc}`;
+
+    fetch(endpoint,{
+      method:"DELETE"
+    })
+    .then((result)=>result.json())
+    .then((data)=>window.location.href = data.redirect)
+    .catch((err)=>{
+      console.log(err);
+    })
+  })
+</script>
+</html>
+<!-- daYTkrZwCtapbmh%rTQC -->
+<!-- 1OY0+1x^-MfTYWgt
+laravel_database
+root
+	epiz_33303997
+epiz_33303997_laravel_db
+
+-->
